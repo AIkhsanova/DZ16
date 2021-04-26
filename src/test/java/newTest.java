@@ -44,6 +44,7 @@ public class newTest {
 
     @Test
     public void GetPet404() throws IOException {
+        petstore.deletePetById(1000).execute();
         int code = petstore.getPetById(1000).execute().code();
         Assertions.assertEquals(404, code);
     }
@@ -65,9 +66,9 @@ public class newTest {
 
     @Test
     public void PutPet404() throws IOException {
-
+        petstore.deletePetById(1000).execute();
         Pet myUpdatePet = new Pet();
-        myUpdatePet.setId(50);
+        myUpdatePet.setId(1000);
         myUpdatePet.setName(myPet.getName());
         myUpdatePet.setCategory(myPet.getCategory());
         myUpdatePet.setStatus("sold out");
@@ -87,7 +88,7 @@ public class newTest {
 
     @Test
     public void DelPet404() throws IOException {
-
+        petstore.deletePetById(1000).execute();
         int code = petstore.deletePetById(1000).execute().code();
         Assertions.assertEquals(404, code);
     }
